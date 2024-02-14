@@ -4,6 +4,7 @@ import path from "path";
 import Handlebars from "handlebars";
 import { fileURLToPath } from "url";
 import { webRoutes } from "./web-routes.js";
+// import db here
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +26,7 @@ async function init() {
     layout: true,
     isCached: false,
   });
+  // init db here
   server.route(webRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
