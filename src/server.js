@@ -1,10 +1,12 @@
-import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
+import Hapi from "@hapi/hapi";
+import dotenv from "dotenv";
 import path from "path";
-import Handlebars from "handlebars";
 import { fileURLToPath } from "url";
+import Handlebars from "handlebars";
 import { webRoutes } from "./web-routes.js";
-// import db here
+import { db } from "./models/db.js";
+import { accountsController } from "./controllers/accounts-controller.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,7 +28,7 @@ async function init() {
     layout: true,
     isCached: false,
   });
-  // init db here
+  db.init("mongo");
   server.route(webRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
