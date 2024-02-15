@@ -1,0 +1,28 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Species</th>
+      <th>Height</th>
+      <th>Girth</th>
+      <th>County</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each province.trees}}
+      <tr>
+        <td>
+          {{species}}
+        </td>
+        <td>
+          {{height}}
+        </td>
+        <td>
+          {{girth}}
+        </td>
+                <td>
+          {{county}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
