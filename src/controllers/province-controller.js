@@ -16,9 +16,10 @@ export const provinceController = {
     handler: async function (request, h) {
       const province = await db.provinceStore.getProvinceById(request.params.id);
       const newTree = {
-        title: request.payload.title,
-        artist: request.payload.artist,
-        duration: Number(request.payload.duration),
+        species: request.payload.species,
+        height: request.payload.height,
+        girth: request.payload.girth,
+        county: request.payload.county,
       };
       await db.treeStore.addTree(province._id, newTree);
       return h.redirect(`/province/${province._id}`);

@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { treeMemStore } from "./tree-mem-store.js";
 
 const provinces = [];
 
@@ -25,6 +26,8 @@ export const provinceMemStore = {
   },
 
   async getProvinceById(id) {
-    return provinces.find((province) => province._id === id);
+    const list = provinces.find((province) => province._id === id);
+    list.trees = await treeMemStore.getTreesByProvinceId(list._id);
+    return list;
   },
 };
