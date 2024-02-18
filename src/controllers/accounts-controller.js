@@ -1,4 +1,4 @@
-// import db here
+import { db } from "../models/db.js";
 
 export const accountsController = {
   index: {
