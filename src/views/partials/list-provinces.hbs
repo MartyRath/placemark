@@ -1,14 +1,12 @@
-<div class="box box-link-hover-shadow">
+{{#each provinces}}
+  <div class="box box-link-hover-shadow">
     <h2 class="title">
-      Leinster
+      {{title}}
     </h2>
-    <h2 class="title">
-      Connacht
-    </h2>
-    <h2 class="title">
-      Munster
-    </h2>
-    <h2 class="title">
-      Ulster
-    </h2>
+    <a href="/province/{{_id}}" class="button">
+      <span class="icon is-small">
+        <i class="fas fa-folder-open"></i>
+      </span>
+    </a>
   </div>
+{{/each}}
