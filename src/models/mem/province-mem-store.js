@@ -23,4 +23,8 @@ export const provinceMemStore = {
   async getAllProvinces() {
     return provinces;
   },
+
+  async getProvinceById(id) {
+    return provinces.find((province) => province._id === id);
+  },
 };
