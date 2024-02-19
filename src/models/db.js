@@ -6,6 +6,8 @@ export const db = {
   userStore: null,
   provinceStore: null,
   treeStore: null,
+  
+  // userProvinceStore: null, Create user specific province id?
 
   init() {
     this.userStore = userMemStore;

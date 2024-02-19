@@ -14,6 +14,11 @@ export const treeMemStore = {
     return tree;
   },
 
+  // Needs work. Makes sense though, get trees by user id rather than province id, as same 4 provinces for each user.
+  async getTreesByUserId(userid) {
+    return trees.filter((tree) => tree.userid === userid);
+  },
+
   async getTreesByProvinceId(id) {
     return trees.filter((tree) => tree.provinceid === id);
   },
