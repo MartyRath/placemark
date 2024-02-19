@@ -7,9 +7,10 @@ export const treeMemStore = {
     return trees;
   },
 
-  async addTree(provinceId, tree) {
+  async addTree(provinceId, userId, tree) {
     tree._id = v4();
     tree.provinceid = provinceId;
+    tree.userid = userId;
     trees.push(tree);
     return tree;
   },

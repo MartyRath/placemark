@@ -4,9 +4,11 @@ export const provinceController = {
   index: {
     handler: async function (request, h) {
       const province = await db.provinceStore.getProvinceById(request.params.id);
+      const loggedInUser = request.auth.credentials;
       const viewData = {
         title: "Province",
         province: province,
+        user: loggedInUser,
       };
       return h.view("province-view", viewData);
     },
@@ -21,7 +23,8 @@ export const provinceController = {
         girth: request.payload.girth,
         county: request.payload.county,
       };
-      await db.treeStore.addTree(province._id, newTree);
+      const userId = request.payload.userid;
+      await db.treeStore.addTree(province._id, userId, newTree);
       return h.redirect(`/province/${province._id}`);
     },
   },
