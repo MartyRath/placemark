@@ -15,12 +15,8 @@ export const userTreeMemStore = {
     return tree;
   },
 
-  async getTreesByUserId(userid) {
-    return trees.filter((tree) => tree.userid === userid);
-  },
-
-  async getTreesByProvinceTitle(title) {
-    return trees.filter((tree) => tree.provinceTitle === title);
+  async getTreesByUserIdAndProvince(province, userId) {
+    return trees.filter((tree) => tree.userid === userId && tree.provinceTitle === province);
   },
 
   async getTreeById(id) {

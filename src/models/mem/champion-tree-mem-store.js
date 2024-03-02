@@ -77,6 +77,6 @@ export const championTreeMemStore = {
     },
 
     async getChampionTreesByProvinceTitle(title) {
-      return championTrees.filter((wow) => wow.province === title);
+      return championTrees.filter((tree) => tree.province === title);
     }
 };

@@ -3,8 +3,8 @@ import { db } from "../models/db.js";
 export const provinceController = {
   index: {
     handler: async function (request, h) {
-      const province = await db.provinceStore.getProvinceByTitle(request.params.title);
       const loggedInUser = request.auth.credentials;
+      const province = await db.provinceStore.getProvinceByTitle(request.params.title, loggedInUser._id);
       const viewData = {
         title: "Province",
         province: province,
