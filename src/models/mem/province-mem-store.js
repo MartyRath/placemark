@@ -1,3 +1,5 @@
+import { championTreeMemStore } from "./champion-tree-mem-store.js";
+
 const provinces = [
   { title: "Leinster" }, 
   { title: "Munster" },
@@ -11,6 +13,8 @@ export const provinceMemStore = {
   },
 
   async getProvinceByTitle(title) {
-    return provinces.find(province => province.title === title);
-  }
+    const list = provinces.find((province) => province.title === title);
+    list.championTrees = await championTreeMemStore.getChampionTreesByProvinceTitle(list.title)
+    return list;
+  },
 };

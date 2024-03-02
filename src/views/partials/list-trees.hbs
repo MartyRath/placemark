@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each province.trees}}
+    {{#each province.championTrees}}
       <tr>
         <td>
           {{species}}
@@ -24,7 +24,7 @@
           {{county}}
         </td>
         <td>
-          <a href="/province/{{../province._id}}/deletetree/{{_id}}" class="ui icon button">
+          <a href="/province/{{../province.title}}/deletetree/{{title}}" class="ui icon button">
             <i class="fas fa-trash"></i>
           </a>
         </td>

@@ -23,8 +23,10 @@ export const provinceController = {
         girth: request.payload.girth,
         county: request.payload.county,
       };
+      console.log(newTree);
       const userId = request.payload.userid;
-      await db.treeStore.addTree(province.title, userId, newTree);
+      console.log(userId);
+      await db.userTreeStore.addTree(province.title, userId, newTree);
       return h.redirect(`/province/${province.title}`);
     },
   },
