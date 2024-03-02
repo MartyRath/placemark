@@ -2,34 +2,33 @@ import { v4 } from "uuid";
 
 let trees = [];
 
-export const treeMemStore = {
+export const userTreeMemStore = {
   async getAllTrees() {
     return trees;
   },
 
-  async addTree(provinceId, userId, tree) {
+  async addTree(provinceTitle, userId, tree) {
     tree._id = v4();
-    tree.provinceid = provinceId;
+    tree.provinceTitle = provinceTitle;
     tree.userid = userId;
     trees.push(tree);
     return tree;
   },
 
-  // Needs work. Makes sense though, get trees by user id rather than province id, as same 4 provinces for each user.
   async getTreesByUserId(userid) {
     return trees.filter((tree) => tree.userid === userid);
   },
 
-  async getTreesByProvinceId(id) {
-    return trees.filter((tree) => tree.provinceid === id);
+  async getTreesByProvinceTitle(title) {
+    return trees.filter((tree) => tree.provinceTitle === title);
   },
 
   async getTreeById(id) {
     return trees.find((tree) => tree._id === id);
   },
 
-  async getProvinceTrees(provinceId) {
-    return trees.filter((tree) => tree.provinceid === provinceId);
+  async getProvinceTrees(provinceTitle) {
+    return trees.filter((tree) => tree.provinceTitle === provinceTitle);
   },
 
   async deleteTree(id) {

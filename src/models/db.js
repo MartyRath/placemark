@@ -1,17 +1,18 @@
 import { userMemStore } from "./mem/user-mem-store.js";
 import { provinceMemStore } from "./mem/province-mem-store.js";
-import { treeMemStore } from "./mem/tree-mem-store.js";
+import { userTreeMemStore } from "./mem/user-tree-mem-store.js";
+import { championTreeMemStore } from "./mem/champion-tree-mem-store.js";
 
 export const db = {
   userStore: null,
   provinceStore: null,
-  treeStore: null,
-  
-  // userProvinceStore: null, Create user specific province id?
+  userTreeStore: null,
+  championTreeStore: null,
 
   init() {
     this.userStore = userMemStore;
     this.provinceStore = provinceMemStore;
-    this.treeStore = treeMemStore;
+    this.userTreeStore = userTreeMemStore;
+    this.championTreeStore = championTreeMemStore;
   },
 };

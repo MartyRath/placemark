@@ -3,7 +3,7 @@ import { db } from "../models/db.js";
 export const provinceController = {
   index: {
     handler: async function (request, h) {
-      const province = await db.provinceStore.getProvinceById(request.params.id);
+      const province = await db.provinceStore.getProvinceByTitle(request.params.title);
       const loggedInUser = request.auth.credentials;
       const viewData = {
         title: "Province",
@@ -16,7 +16,7 @@ export const provinceController = {
 
   addTree: {
     handler: async function (request, h) {
-      const province = await db.provinceStore.getProvinceById(request.params.id);
+      const province = await db.provinceStore.getProvinceByTitle(request.params.title);
       const newTree = {
         species: request.payload.species,
         height: request.payload.height,
@@ -24,8 +24,8 @@ export const provinceController = {
         county: request.payload.county,
       };
       const userId = request.payload.userid;
-      await db.treeStore.addTree(province._id, userId, newTree);
-      return h.redirect(`/province/${province._id}`);
+      await db.treeStore.addTree(province.title, userId, newTree);
+      return h.redirect(`/province/${province.title}`);
     },
   },
 };
