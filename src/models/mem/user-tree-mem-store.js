@@ -23,10 +23,6 @@ export const userTreeMemStore = {
     return trees.find((tree) => tree._id === id);
   },
 
-  async getProvinceTrees(provinceTitle) {
-    return trees.filter((tree) => tree.provinceTitle === provinceTitle);
-  },
-
   async deleteTree(id) {
     const index = trees.findIndex((tree) => tree._id === id);
     trees.splice(index, 1);
