@@ -36,7 +36,7 @@ async function init() {
     path: "./views",
     layoutPath: "./views/layouts",
     partialsPath: "./views/partials",
-    layout: true,
+    layout: true, // each page will use layout template
     isCached: false,
   });
   db.init();
