@@ -23,10 +23,16 @@ export const provinceController = {
         girth: request.payload.girth,
         county: request.payload.county,
       };
-      console.log(newTree);
       const userId = request.payload.userid;
-      console.log(userId);
       await db.userTreeStore.addTree(province.title, userId, newTree);
+      return h.redirect(`/province/${province.title}`);
+    },
+  },
+
+  deleteTree: {
+    handler: async function(request, h) {
+      const province = await db.provinceStore.getProvinceByTitle(request.params.title);
+      await db.userTreeStore.deleteTree(request.params.treeid);
       return h.redirect(`/province/${province.title}`);
     },
   },

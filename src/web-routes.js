@@ -7,6 +7,7 @@ export const webRoutes = [
   // Province
   { method: "GET", path: "/province/{title}", config: provinceController.index },
   { method: "POST", path: "/province/{title}/addtree", config: provinceController.addTree },
+  { method: "GET", path: "/province/{title}/deletetree/{treeid}", config: provinceController.deleteTree },
   
   // About
   { method: "GET", path: "/about", config: aboutController.index },

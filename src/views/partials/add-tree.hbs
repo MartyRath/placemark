@@ -1,10 +1,10 @@
 <form class="box" action="/province/{{province.title}}/addtree" method="POST">
   <input type="hidden" name="userid" value="{{user._id}}">
   
-  <label for="species">Species:</label>
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">
+        <label for="species">Species:</label>
         <input class="input" type="text" placeholder="Enter Species" name="species" id="species">
       </div>
       <div class="field">
@@ -16,16 +16,8 @@
         <input class="input" type="text" placeholder="Enter Girth" name="girth" id="girth">
       </div>
       <div class="field">
-        <label for="county">County:</label>
+        <label for="county">Location:</label>
         <input class="input" type="text" placeholder="Enter County" name="county" id="county">
-      </div>
-      <div class="field">
-        <label for="latitude">Latitude:</label>
-        <input class="input" type="text" placeholder="00.00" name="latitude" id="latitude">
-      </div>
-      <div class="field">
-        <label for="longitude">Longitude:</label>
-        <input class="input" type="text" placeholder="00.00" name="longitude" id="longitude">
       </div>
     </div>
   </div>
