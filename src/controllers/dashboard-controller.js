@@ -6,7 +6,7 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
       const provinces = await db.provinceStore.getAllProvinces();
       const viewData = {
-        title: "Tree Dashboard",
+        title: "Province Dashboard",
         user: loggedInUser,
         provinces: provinces,
       };
