@@ -7,8 +7,10 @@ import { userTreeJsonStore } from "./json/user-tree-json-store.js";
 import { championTreeJsonStore } from "./json/champion-tree-json-store.js";
 import { provinceJsonStore } from "./json/province-json-store.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
-// import { provinceMongoStore } from "./mongo/province-mongo-store.js";
+import { provinceMongoStore } from "./mongo/province-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
+import { userTreeMongoStore } from "./mongo/user-tree-mongo-store.js";
+import { championTreeMongoStore } from "./mongo/champion-tree-mongo-store.js";
 
 export const db = {
   userStore: null,
@@ -26,6 +28,9 @@ export const db = {
       break;
       case "mongo" :
         this.userStore = userMongoStore;
+        this.provinceStore = provinceMongoStore;
+        this.userTreeStore = userTreeMongoStore;
+        this.championTreeStore = championTreeMongoStore;
         connectMongo();
       break;
       default:
