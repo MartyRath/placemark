@@ -1,5 +1,27 @@
 {
-  "users": [],
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "_id": "afbdb2f4-443a-4969-99b5-df8ca302fdc4"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "_id": "637c6923-8125-482a-9364-39fa7a1a5793"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "_id": "a38fd8e3-05e4-44ea-a056-7eb943da803a"
+    }
+  ],
   "provinces": [
     {
       "title": "Leinster"

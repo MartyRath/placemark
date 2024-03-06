@@ -1,8 +1,7 @@
-// import { userMemStore } from "./mem/user-mem-store.js";
-// import { provinceMemStore } from "./mem/province-mem-store.js";
-// import { userTreeMemStore } from "./mem/user-tree-mem-store.js";
-// import { championTreeMemStore } from "./mem/champion-tree-mem-store.js";
-
+import { userMemStore } from "./mem/user-mem-store.js";
+import { provinceMemStore } from "./mem/province-mem-store.js";
+import { userTreeMemStore } from "./mem/user-tree-mem-store.js";
+import { championTreeMemStore } from "./mem/champion-tree-mem-store.js";
 import { userJsonStore } from "./json/user-json-store.js";
 import { userTreeJsonStore } from "./json/user-tree-json-store.js";
 import { championTreeJsonStore } from "./json/champion-tree-json-store.js";
@@ -14,10 +13,19 @@ export const db = {
   userTreeStore: null,
   championTreeStore: null,
 
-  init() {
-    this.userStore = userJsonStore;
-    this.provinceStore = provinceJsonStore;
-    this.userTreeStore = userTreeJsonStore;
-    this.championTreeStore = championTreeJsonStore;
+  init(storeType) {
+    switch (storeType) {
+      case "json":
+        this.userStore = userJsonStore;
+        this.provinceStore = provinceJsonStore;
+        this.userTreeStore = userTreeJsonStore;
+        this.championTreeStore = championTreeJsonStore;
+        break;
+      default:
+        this.userStore = userMemStore;
+        this.provinceStore = provinceMemStore;
+        this.userTreeStore = userTreeMemStore;
+        this.championTreeStore = championTreeMemStore;
+    }
   },
 };
