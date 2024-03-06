@@ -5,9 +5,10 @@ import Handlebars from "handlebars";
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
-import { webRoutes } from "./web-routes.js";
-import { db } from "./models/db.js";
+import Joi from "joi";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { db } from "./models/db.js";
+import { webRoutes } from "./web-routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +26,7 @@ async function init() {
   });
   await server.register(Vision);
   await server.register(Cookie);
+  server.validator(Joi);
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.cookie_name,
