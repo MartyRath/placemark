@@ -41,7 +41,6 @@ export const provinceController = {
         description: request.payload.description,
       };
       const userId = request.payload.userid;
-      console.log(userId);
       await db.userTreeStore.addUserTree(province.title, userId, newUserTree);
       return h.redirect(`/province/${province.title}`);
     },
