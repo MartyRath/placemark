@@ -1,18 +1,21 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
-      <th>Species</th>
+      <th>Title</th>
+      <th>Location</th>
       <th>Height</th>
       <th>Girth</th>
-      <th>County</th>
-      <th>Actions</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     {{#each province.userTrees}}
       <tr>
         <td>
-          {{species}}
+          {{title}}
+        </td>
+        <td>
+          {{location}}
         </td>
         <td>
           {{height}}
@@ -21,7 +24,7 @@
           {{girth}}
         </td>
         <td>
-          {{county}}
+          {{description}}
         </td>
         <td>
           <a href="/province/{{../province.title}}/deletetree/{{_id}}" class="ui icon button">

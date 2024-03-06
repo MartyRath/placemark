@@ -17,5 +17,6 @@ export const TreeSpec = {
     location: Joi.string().required(),
     height: Joi.number().allow("").optional(),
     girth: Joi.number().allow("").optional(),
-    description: Joi.string().optional(),
+    description: Joi.string().allow("").optional(),
+    userid: Joi.string().required()
 };
