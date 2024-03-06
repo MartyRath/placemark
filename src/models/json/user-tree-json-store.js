@@ -19,18 +19,26 @@ export const userTreeJsonStore = {
 
   async getUserTreesByUserIdAndProvince(province, userId) {
     await db.read();
-    return db.data.userTrees.filter((userTree) => userTree.userid === userId && userTree.provinceTitle === province);
+    let foundTrees = db.data.userTrees.filter((userTree) => userTree.userid === userId && userTree.provinceTitle === province);
+    if (!foundTrees) {
+      foundTrees = null;
+    }
+    return foundTrees;
   },
 
   async getUserTreeById(id) {
     await db.read();
-    return db.data.userTrees.find((userTree) => userTree._id === id);
+    let foundTree = db.data.userTrees.find((userTree) => userTree._id === id);
+    if (!foundTree) {
+      foundTree = null;
+    }
+    return foundTree;
   },
 
   async deleteUserTree(id) {
     await db.read();
     const index = db.data.userTrees.findIndex((userTree) => userTree._id === id);
-    db.data.userTrees.splice(index, 1);
+    if (index !== -1) db.data.userTrees.splice(index, 1);
     await db.write();
   },
 

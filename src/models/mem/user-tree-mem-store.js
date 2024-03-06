@@ -20,12 +20,16 @@ export const userTreeMemStore = {
   },
 
   async getTreeById(id) {
-    return trees.find((tree) => tree._id === id);
+    let foundTree = trees.find((tree) => tree._id === id);
+    if (!foundTree) {
+      foundTree = null;
+    }
+    return foundTree;
   },
 
   async deleteTree(id) {
     const index = trees.findIndex((tree) => tree._id === id);
-    trees.splice(index, 1);
+    if (index !== -1) trees.splice(index, 1);
   },
 
   async deleteAllTrees() {
