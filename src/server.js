@@ -13,6 +13,7 @@ import { webRoutes } from "./web-routes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Check for .env file. If not available, terminate program.
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);

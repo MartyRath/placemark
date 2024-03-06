@@ -20,7 +20,10 @@ export const accountsController = {
       payload: UserSpec, // Which Joi schema to use
       options: { abortEarly: false }, // Check for all errors
       failAction: function (request, h, error) {
-        return h.view("signup-view", { title: "Sign up error", errors: error.details }).takeover().code(400);
+        return h.view("signup-view", { 
+          title: "Sign up error", 
+          errors: error.details 
+        }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -37,6 +40,13 @@ export const accountsController = {
   },
   login: {
     auth: false,
+    validate: {
+      payload: UserCredentialsSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("login-view", { title: "Log in error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
