@@ -12,7 +12,7 @@ export const UserCredentialsSpec = {
     password: Joi.string().required(),
 };
 
-export const TreeSpec = {
+export const UserTreeSpec = {
     title: Joi.string().required(),
     location: Joi.string().required(),
     height: Joi.number().allow("").optional(),

@@ -6,8 +6,8 @@ import { provinceController} from "./controllers/province-controller.js"
 export const webRoutes = [
   // Province
   { method: "GET", path: "/province/{title}", config: provinceController.index },
-  { method: "POST", path: "/province/{title}/addtree", config: provinceController.addTree },
-  { method: "GET", path: "/province/{title}/deletetree/{treeid}", config: provinceController.deleteTree },
+  { method: "POST", path: "/province/{title}/addusertree", config: provinceController.addUserTree },
+  { method: "GET", path: "/province/{title}/deleteusertree/{treeid}", config: provinceController.deleteUserTree },
   
   // About
   { method: "GET", path: "/about", config: aboutController.index },
