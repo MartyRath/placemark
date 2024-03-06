@@ -1,4 +1,5 @@
 import { db } from "../models/db.js";
+import { TreeSpec } from "../models/joi-schemas.js";
 
 export const provinceController = {
   index: {
@@ -15,13 +16,21 @@ export const provinceController = {
   },
 
   addTree: {
+    validate: {
+      payload: TreeSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("province-view", { title: "Add tree error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const province = await db.provinceStore.getProvinceByTitle(request.params.title);
       const newTree = {
-        species: request.payload.species,
+        title: request.payload.title,
+        location: request.payload.location,
         height: request.payload.height,
         girth: request.payload.girth,
-        county: request.payload.county,
+        description: request.payload.description,
       };
       const userId = request.payload.userid;
       await db.userTreeStore.addTree(province.title, userId, newTree);
