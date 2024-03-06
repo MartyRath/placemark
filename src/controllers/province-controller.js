@@ -19,8 +19,16 @@ export const provinceController = {
     validate: {
       payload: UserTreeSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("province-view", { title: "Add tree error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const loggedInUser = request.auth.credentials;
+        const province = await db.provinceStore.getProvinceByTitle(request.params.title, loggedInUser._id);
+        const viewData = {
+          title: "Add tree error",
+          province: province,
+          user: loggedInUser,
+          errors: error.details
+        };
+        return h.view("province-view", viewData).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -33,6 +41,7 @@ export const provinceController = {
         description: request.payload.description,
       };
       const userId = request.payload.userid;
+      console.log(userId);
       await db.userTreeStore.addUserTree(province.title, userId, newUserTree);
       return h.redirect(`/province/${province.title}`);
     },
