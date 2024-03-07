@@ -8,7 +8,7 @@ export const provinceJsonStore = {
     return db.data.provinces;
   },
 
-  async getProvinceByTitle(title, userId) {
+  async getProvinceByTitleAndUserId(title, userId) {
     await db.read();
     const list = db.data.provinces.find((province) => province.title === title);
     list.championTrees = await championTreeJsonStore.getChampionTreesByProvinceTitle(list.title);
