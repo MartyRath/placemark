@@ -54,3 +54,5 @@ export const testUserTrees = [ {
   "userid": 3,
 },
 ]
+
+export const serviceUrl = "http://localhost:3000";

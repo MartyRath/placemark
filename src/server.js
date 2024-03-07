@@ -2,10 +2,12 @@ import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
 import path from "path";
 import Handlebars from "handlebars";
+
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import Joi from "joi";
+import { apiRoutes } from "./api-routes.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { db } from "./models/db.js";
 import { webRoutes } from "./web-routes.js";
@@ -51,6 +53,7 @@ async function init() {
   });
   db.init("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }
