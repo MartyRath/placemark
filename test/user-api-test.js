@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { placemarkService } from "./placemark-service.js";
-import { assertSubset } from "../test-utils.js";
-import { maggie } from "../fixtures.js";
+import { assertSubset } from "./test-utils.js";
+import { maggie } from "./fixtures.js";
 
 suite("User API tests", () => {
   setup(async () => {
