@@ -1,12 +1,12 @@
-import { UserTree } from "./userTree.js"; 
+import { UserTree } from "./userTree.js";
 
 export const userTreeMongoStore = {
   async getUserTreesByProvinceTitle(title) {
-    const userTrees = await userTree.find({ province: title }).lean();
+    const userTrees = await UserTree.find({ province: title }).lean();
     return userTrees;
   },
 
-  async getUserTreesByUserIdAndProvince(province, userId) {
+  async getUserTreesByUserIdAndProvince(userId, province) {
     try {
       const foundTrees = await UserTree.find({ province: province, userid: userId }).lean();
       return foundTrees;
@@ -15,4 +15,21 @@ export const userTreeMongoStore = {
       return null;
     }
   },
+
+  async getUserTreeById(id) {
+    if (id) {
+      const userTree = await UserTree.findOne({ _id: id }).lean();
+      return userTree;
+    }
+    return null;
+  },
+
+  async addUserTree(provinceTitle, userId, userTree) {
+    userTree.provinceTitle = provinceTitle;
+    userTree.userid = userId;
+    const newUserTree = new UserTree(userTree);
+    await newUserTree.save();
+    return newUserTree.toObject();
+  },
+
 };

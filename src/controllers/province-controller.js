@@ -6,6 +6,7 @@ export const provinceController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title, loggedInUser._id);
+      
       const viewData = {
         title: "Province",
         province: province,
@@ -21,7 +22,7 @@ export const provinceController = {
       options: { abortEarly: false },
       failAction: async function (request, h, error) {
         const loggedInUser = request.auth.credentials;
-        const province = await db.provinceStore.getProvinceByTitle(request.params.title, loggedInUser._id);
+        const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title, loggedInUser._id);
         const viewData = {
           title: "Add tree error",
           province: province,
@@ -33,8 +34,7 @@ export const provinceController = {
     },
     handler: async function (request, h) {
       const userId = request.payload.userid;
-      const province = await db.provinceStore.getProvinceByTitle(request.params.title);
-      console.log(province.title)
+      const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title);
       const newUserTree = {
         title: request.payload.title,
         location: request.payload.location,

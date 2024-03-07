@@ -12,7 +12,7 @@ const userTreeSchema = new Schema({
   // Added userid here rather than in province
   userid: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "userid",
   },
 });
 
