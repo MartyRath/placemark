@@ -25,3 +25,32 @@ export const testUsers = [
       password: "secret",
     },
 ];
+
+export const testUserTrees = [ {
+  "title": "Douglas fir",
+  "location": "Powerscourt Gardens, Enniskerry, Co Wicklow",
+  "height": 57.5,
+  "girth": 4.86,
+  "description": "fav0urite Tree",
+  "province": "Leinster",
+  "userid": 1,
+},
+{
+  "title": "Sitka spruce",
+  "location": "Curraghmore, Portlaw, Co Waterford",
+  "height": 55.0,
+  "girth": 6.70,
+  "description": "/./'#[]2",
+  "province": "Munster",
+  "userid": 2,
+},
+{
+  "title": "Sitka spruce",
+  "location": "Powerscourt Gardens, Enniskerry, Co Wicklow",
+  "height": 55.0,
+  "girth": 6.40,
+  "description": "Incredible Tree",
+  "province": "Leinster",
+  "userid": 3,
+},
+]
