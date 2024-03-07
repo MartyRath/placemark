@@ -3,14 +3,11 @@ import Mongoose from "mongoose";
 const { Schema } = Mongoose;
 
 const championTreeSchema = new Schema({
-  title: String,
+  species: String,
   height: Number,
   girth: Number,
   location: String,
-  provinceid: {
-    type: Schema.Types.ObjectId,
-    ref: "Province",
-  },
+  province: String,
 });
 
 export const ChampionTree = Mongoose.model("ChampionTree", championTreeSchema);

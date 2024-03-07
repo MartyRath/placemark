@@ -1,6 +1,6 @@
 import { championTreeMongoStore } from "./champion-tree-mongo-store.js";
 import { userTreeMongoStore } from "./user-tree-mongo-store.js";
-import { Province } from "./province.js";
+
 
 export const provinceMongoStore = {
   async getAllProvinces() {
