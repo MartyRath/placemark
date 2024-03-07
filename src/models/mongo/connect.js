@@ -35,6 +35,7 @@ export function connectMongo() {
       const provinceCount = await Province.countDocuments();
       const championTreeCount = await ChampionTree.countDocuments();
 
+      // If province or champion tree collection is empty, populate it
       if (provinceCount === 0) {
         await insertProvinceData();
         console.log("Province added successfully.");
@@ -44,7 +45,7 @@ export function connectMongo() {
         console.log("Champion Tree data added successfully.");
       }
     } catch (error) {
-      console.error("Error adding province and champion tree data:", error);
+      console.error("Error adding province and/or champion tree data:", error);
     }
   });
   

@@ -8,10 +8,7 @@ const userTreeSchema = new Schema({
   height: Number,
   girth: Number,
   description: String,
-  provinceid: {
-    type: Schema.Types.ObjectId,
-    ref: "Province",
-  },
+  province: String,
   // Added userid here rather than in province
   userid: {
     type: Schema.Types.ObjectId,
@@ -19,4 +16,4 @@ const userTreeSchema = new Schema({
   },
 });
 
-export const userTree = Mongoose.model("UserTree", userTreeSchema);
+export const UserTree = Mongoose.model("UserTree", userTreeSchema);
