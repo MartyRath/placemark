@@ -25,11 +25,11 @@ export const userTreeMongoStore = {
   },
 
   async addUserTree(provinceTitle, userId, userTree) {
-    userTree.provinceTitle = provinceTitle;
+    userTree.province = provinceTitle;
     userTree.userid = userId;
     const newUserTree = new UserTree(userTree);
-    await newUserTree.save();
-    return newUserTree.toObject();
+    const userTreeObj = await newUserTree.save();
+    return this.getUserTreeById(userTreeObj._id);
   },
 
 };

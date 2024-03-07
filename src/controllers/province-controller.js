@@ -34,7 +34,7 @@ export const provinceController = {
     },
     handler: async function (request, h) {
       const userId = request.payload.userid;
-      const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title);
+      const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title, userId);
       const newUserTree = {
         title: request.payload.title,
         location: request.payload.location,
