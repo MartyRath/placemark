@@ -1,5 +1,4 @@
 import axios from "axios"; // Allows to make http requests
-
 import { serviceUrl } from "../fixtures.js";
 
 export const placemarkService = {
@@ -26,12 +25,12 @@ export const placemarkService = {
   },
 
   async getAllProvinces() {
-    const res = await axios.get(`${this.playtimeUrl}/api/provinces`);
+    const res = await axios.get(`${this.placemarkUrl}/api/provinces`);
     return res.data;
   },
 
-  async getProvince(id) {
-    const res = await axios.get(`${this.playtimeUrl}/api/provinces/${id}`);
+  async getProvince(title) {
+    const res = await axios.get(`${this.placemarkUrl}/api/provinces/${title}`);
     return res.data;
   },
 };

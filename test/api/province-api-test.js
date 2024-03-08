@@ -19,5 +19,12 @@ suite("Province API tests", () => {
   });
 
   test("get all provinces", async () => {
+    // Retrieve all provinces
+    const allProvinces = await placemarkService.getAllProvinces();
+
+    // Assertions
+    assert.isArray(allProvinces, "Testing for an array");
+    assert.isNotEmpty(allProvinces, "Testing provinces is not empty array");
+    assert.deepEqual(allProvinces, testProvinces, "All provinces are the same as testProvinces");
   });
 });
