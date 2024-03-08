@@ -1,4 +1,4 @@
-import Boom from "@hapi/boom";
+import Boom from "@hapi/boom";  // For HTTP error handling
 import { db } from "../models/db.js";
 
 export const userApi = {
@@ -9,7 +9,7 @@ export const userApi = {
         const users = await db.userStore.getAllUsers();
         return users;
       } catch (err) {
-        return Boom.serverUnavailable("Database Error");
+        return Boom.serverUnavailable("Database Error"); // Boom turns to standard HTTP error
       }
     },
   },
@@ -35,11 +35,11 @@ export const userApi = {
       try {
         const user = await db.userStore.addUser(request.payload);
         if (user) {
-          return h.response(user).code(201);
+          return h.response(user).code(201);  // 201 indicates created something new
         }
         return Boom.badImplementation("error creating user");
       } catch (err) {
-        return Boom.serverUnavailable("Database Error");
+        return Boom.serverUnavailable("Database Error");  // If entire db unavailable
       }
     },
   },
@@ -49,7 +49,7 @@ export const userApi = {
     handler: async function (request, h) {
       try {
         await db.userStore.deleteAll();
-        return h.response().code(204);
+        return h.response().code(204);  // Indicates something deleted
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; // Allows to make http requests
 
 import { serviceUrl } from "../fixtures.js";
 
@@ -22,6 +22,16 @@ export const placemarkService = {
 
   async deleteAllUsers() {
     const res = await axios.delete(`${this.placemarkUrl}/api/users`);
+    return res.data;
+  },
+
+  async getAllProvinces() {
+    const res = await axios.get(`${this.playtimeUrl}/api/provinces`);
+    return res.data;
+  },
+
+  async getProvince(id) {
+    const res = await axios.get(`${this.playtimeUrl}/api/provinces/${id}`);
     return res.data;
   },
 };
