@@ -1,4 +1,5 @@
 import { userApi } from "./api/user-api.js";
+import { provinceApi } from "./api/province-api.js";
 
 export const apiRoutes = [
   // User routes

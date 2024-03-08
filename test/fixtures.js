@@ -56,3 +56,8 @@ export const testUserTrees = [ {
 ]
 
 export const serviceUrl = "http://localhost:3000";
+
+export const testProvinces =  [{ "title": "Leinster" }, 
+  { "title": "Munster" },
+  { "title": "Ulster" },
+  { "title": "Connacht" }];
