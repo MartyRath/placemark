@@ -16,7 +16,7 @@ export const provinceApi = {
 
   findOne: {
     auth: false,
-    handler: async function (request, h) {
+    async handler(request) {
       try {
         const province = await db.userStore.getProvinceByTitle(title);
         if (!province) {
