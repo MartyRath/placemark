@@ -7,7 +7,10 @@ const championTreeSchema = new Schema({
   height: Number,
   girth: Number,
   location: String,
-  province: String,
+  province: {
+    type: String, // Refers to object in other collection
+    ref: "Province" // Refers to object type: Province
+  },
 });
 
 export const ChampionTree = Mongoose.model("ChampionTree", championTreeSchema);

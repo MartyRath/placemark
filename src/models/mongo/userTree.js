@@ -8,8 +8,10 @@ const userTreeSchema = new Schema({
   height: Number,
   girth: Number,
   description: String,
-  province: String,  // As provinces are simple strings, will not use ref from Province
-  // Added userid here rather than in province
+  province: {
+    type: String, // Refers to object in other collection
+    ref: "Province" // Refers to object type: Province
+  },  
   userid: {
     type: Schema.Types.ObjectId, // Refers to object in other collection
     ref: "User", // Refers to object type: User
