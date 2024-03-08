@@ -10,7 +10,7 @@ export const apiRoutes = [
 
   // Province routes
   { method: "GET", path: "/api/provinces", config: provinceApi.find },
-  { method: "GET", path: "/api/provinces/{id}", config: provinceApi.findOne },
+  { method: "GET", path: "/api/provinces/{title}", config: provinceApi.findOne },
   // User tree routes
 
   // Champion tree routes

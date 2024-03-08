@@ -29,8 +29,9 @@ export const placemarkService = {
     return res.data;
   },
 
-  async getProvince(title) {
+  async getProvinceByTitle(title) {
     const res = await axios.get(`${this.placemarkUrl}/api/provinces/${title}`);
+    console.log("placemark service error")
     return res.data;
   },
 };

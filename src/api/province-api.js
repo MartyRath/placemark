@@ -16,15 +16,15 @@ export const provinceApi = {
 
   findOne: {
     auth: false,
-    async handler(request) {
+    handler: async function (request, h) {
       try {
-        const province = await db.provinceStore.getProvinceByTitle(title);
+        const province = await db.userStore.getProvinceByTitle(title);
         if (!province) {
-          return Boom.notFound("No province with this title");
+          return Boom.notFound("No Province with this title");
         }
         return province;
       } catch (err) {
-        return Boom.serverUnavailable("No province with this title");
+        return Boom.serverUnavailable("No Province with this title");
       }
     },
   },

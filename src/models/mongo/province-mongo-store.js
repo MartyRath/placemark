@@ -9,11 +9,11 @@ export const provinceMongoStore = {
     },
 
   async getProvinceByTitle(title) {
-    if (title) {
-      const province = await Province.findOne({ title }).lean();
-      return province;
-    }
-    return null;
+      if (title) {
+        const province = await Province.findOne({ title }).lean();
+        return province;
+      }
+      return null;
   },
 
   async getProvinceByTitleAndUserId(title, userId) {

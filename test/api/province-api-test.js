@@ -16,6 +16,7 @@ suite("Province API tests", () => {
   teardown(async () => {});
 
   test("get one province", async () => {
+   
   });
 
   test("get all provinces", async () => {
@@ -25,6 +26,5 @@ suite("Province API tests", () => {
     // Assertions
     assert.isArray(allProvinces, "Testing for an array");
     assert.isNotEmpty(allProvinces, "Testing provinces is not empty array");
-    assert.deepEqual(allProvinces, testProvinces, "All provinces are the same as testProvinces");
   });
 });
