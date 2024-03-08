@@ -30,8 +30,7 @@ export const placemarkService = {
   },
 
   async getProvinceByTitle(title) {
-    const res = await axios.get(`${this.placemarkUrl}/api/provinces/${title}`);
-    console.log("placemark service error")
-    return res.data;
+      const res = await axios.get(`${this.placemarkUrl}/api/provinces?title=${encodeURIComponent(title)}`);
+      return res.data;
   },
 };

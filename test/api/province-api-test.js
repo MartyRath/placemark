@@ -16,14 +16,14 @@ suite("Province API tests", () => {
   teardown(async () => {});
 
   test("get one province", async () => {
-   
+    const provinceTestTitle = testProvinces[0].title;
+    const province = await placemarkService.getProvinceByTitle(provinceTestTitle);
+    assertSubset(testProvinces[0], province);
   });
 
   test("get all provinces", async () => {
-    // Retrieve all provinces
     const allProvinces = await placemarkService.getAllProvinces();
 
-    // Assertions
     assert.isArray(allProvinces, "Testing for an array");
     assert.isNotEmpty(allProvinces, "Testing provinces is not empty array");
   });
