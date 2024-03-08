@@ -1,9 +1,11 @@
+/* eslint-disable no-empty-function */
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 
-export const userTrackApi = {
+export const userTreeApi = {
   find: {
     auth: false,
+    // eslint-disable-next-line no-empty-function
     handler: async function (request, h) {
     },
   },
