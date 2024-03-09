@@ -17,8 +17,12 @@ suite("Province API tests", () => {
 
   test("get one province", async () => {
     const provinceTestTitle = testProvinces[0].title;
-    const province = await placemarkService.getProvinceByTitle(provinceTestTitle);
+    const provinces = await placemarkService.getProvinceByTitle(provinceTestTitle);
+    // GetProvinceByTitle seems to only return array. Workaround below
+    const province = provinces.find(p => p.title === provinceTestTitle);
+    assert.isNotNull(province);
     assertSubset(testProvinces[0], province);
+    assert.deepEqual(province.title, provinceTestTitle)
   });
 
   test("get all provinces", async () => {

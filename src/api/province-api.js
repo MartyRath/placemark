@@ -18,7 +18,7 @@ export const provinceApi = {
     auth: false,
     async handler(request) {
       try {
-        const province = await db.userStore.getProvinceByTitle(title);
+        const province = await db.userStore.getProvinceByTitle(request.params.title);
         if (!province) {
           return Boom.notFound("No Province with this title");
         }

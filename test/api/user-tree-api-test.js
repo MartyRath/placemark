@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
-import { playtimeService } from "./playtime-service.js";
+import { placemarkService } from "./placemark-service.js";
 import { maggie, testProvinces, testUserTrees } from "../fixtures.js";
 
 suite("Tree API tests", () => {
