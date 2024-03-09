@@ -22,4 +22,7 @@ export const webRoutes = [
 
   // Dashboard
   { method: "GET", path: "/dashboard", config: dashboardController.index },
+
+  // Public
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];

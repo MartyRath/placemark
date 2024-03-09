@@ -2,7 +2,7 @@ import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
 import path from "path";
 import Handlebars from "handlebars";
-
+import Inert from "@hapi/inert";
 import { fileURLToPath } from "url";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
@@ -29,6 +29,7 @@ async function init() {
   });
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register(Inert);
   server.validator(Joi);
   server.auth.strategy("session", "cookie", {
     cookie: {
