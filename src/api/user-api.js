@@ -1,17 +1,25 @@
 import Boom from "@hapi/boom";  // For HTTP error handling
 import { db } from "../models/db.js";
+import { UserArray } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
+import { UserSpec } from "../models/joi-schemas.js";
+import { IdSpec } from "../models/joi-schemas.js";
 
 export const userApi = {
   find: {
     auth: false,
-    handler: async function (request, h) {
+    handler: async function(request, h) {
       try {
         const users = await db.userStore.getAllUsers();
         return users;
       } catch (err) {
-        return Boom.serverUnavailable("Database Error"); // Boom turns to standard HTTP error
+        return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all userApi",
+    notes: "Returns details of all userApi",
+    response: { schema: UserArray, failAction: validationError },
   },
 
   findOne: {
@@ -27,32 +35,45 @@ export const userApi = {
         return Boom.serverUnavailable("No User with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specific user",
+    notes: "Returns user details",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: UserSpec, failAction: validationError },
   },
 
   create: {
     auth: false,
-    handler: async function (request, h) {
+    handler: async function(request, h) {
       try {
         const user = await db.userStore.addUser(request.payload);
         if (user) {
-          return h.response(user).code(201);  // 201 indicates created something new
+          return h.response(user).code(201);
         }
         return Boom.badImplementation("error creating user");
-      } catch (err) {
-        return Boom.serverUnavailable("Database Error");  // If entire db unavailable
-      }
-    },
-  },
-
-  deleteAll: {
-    auth: false,
-    handler: async function (request, h) {
-      try {
-        await db.userStore.deleteAll();
-        return h.response().code(204);  // Indicates something deleted
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a User",
+    notes: "Returns the newly created user",
+    validate: { payload: UserSpec, failAction: validationError },
+    response: { schema: UserSpec, failAction: validationError },
+  },
+
+  deleteAll: {
+    auth: false,
+    handler: async function(request, h) {
+      try {
+        await db.userStore.deleteAll();
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Delete all userApi",
+    notes: "All userApi removed from Playtime",
   },
 };
