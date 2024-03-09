@@ -32,6 +32,38 @@ export const placemarkService = {
   async getProvinceByTitle(title) {
     const res = await axios.get(`${this.placemarkUrl}/api/provinces?title=${title}`);
     return res.data;
-  }
+  },
 
+  async addUserTree(province, userId, userTree) {
+    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/usertrees`, {
+      userId,
+      userTree
+    });
+    return res.data;
+  },
+
+  async getUserTreesByUserIdAndProvince(userId, province) {
+    const res = await axios.get(`${this.placemarkUrl}/api/usertrees?userId=${userId}&province=${province}`);
+    return res.data;
+  },
+
+  async deleteAllUserTrees() {
+    const res = await axios.delete(`${this.placemarkUrl}/api/usertrees`);
+    return res.data;
+  },
+
+  async getAllUserTrees() {
+    const res = await axios.get(`${this.placemarkUrl}/api/usertrees`);
+    return res.data;
+  },
+
+  async getUserTreeById(userTreeId) {
+    const res = await axios.get(`${this.placemarkUrl}/api/usertrees/find/${userTreeId}`);
+    return res.data;
+  },
+
+  async deleteUserTree(userTreeId) {
+    const res = await axios.delete(`${this.placemarkUrl}/api/usertrees/del/${userTreeId}`);
+    return res.data;
+  }
 };

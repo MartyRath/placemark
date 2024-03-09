@@ -1,9 +1,7 @@
 import Boom from "@hapi/boom";  // For HTTP error handling
 import { db } from "../models/db.js";
-import { UserArray } from "../models/joi-schemas.js";
+import { UserArray, UserSpec, IdSpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
-import { UserSpec } from "../models/joi-schemas.js";
-import { IdSpec } from "../models/joi-schemas.js";
 
 export const userApi = {
   find: {

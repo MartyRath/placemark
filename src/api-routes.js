@@ -16,10 +16,10 @@ export const apiRoutes = [
   
   // User usertree routes
   { method: "GET", path: "/api/usertrees", config: userTreeApi.find },
-  { method: "GET", path: "/api/usertrees/{id}", config: userTreeApi.findOne },
-  { method: "POST", path: "/api/provinces/{id}/usertrees", config: userTreeApi.create },
+  { method: "GET", path: "/api/usertrees/find/{id}", config: userTreeApi.findOne },
+  { method: "POST", path: "/api/provinces/{title}/usertrees", config: userTreeApi.create },
   { method: "DELETE", path: "/api/usertrees", config: userTreeApi.deleteAll },
-  { method: "DELETE", path: "/api/usertrees/{id}", config: userTreeApi.deleteOne },
+  { method: "DELETE", path: "/api/usertrees/del/{id}", config: userTreeApi.deleteOne },
 
   // Champion usertree routes
 ];
