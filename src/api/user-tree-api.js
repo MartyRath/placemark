@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { IdSpec, UserTreeSpec, UserTreeSpecPlus, UserTreeArraySpec } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const userTreeApi = {
   find: {
@@ -12,6 +14,10 @@ export const userTreeApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: UserTreeArraySpec, failAction: validationError },
+    description: "Get all userTreeApi",
+    notes: "Returns all userTreeApi",
   },
 
   findOne: {
@@ -27,6 +33,11 @@ export const userTreeApi = {
         return Boom.serverUnavailable("No user tree with this id");
       }
     },
+    tags: ["api"],
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: UserTreeSpecPlus, failAction: validationError },
+    description: "Finds a user tree",
+    notes: "Returns a user tree",
   },
 
   create: {
@@ -45,6 +56,11 @@ export const userTreeApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a user tree",
+    notes: "Returns the newly created user tree",
+    validate: { payload: UserTreeSpec },
+    response: { schema: UserTreeSpecPlus, failAction: validationError },
   },
 
   deleteAll: {
@@ -57,6 +73,8 @@ export const userTreeApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Deletes all userTreeApi",
   },
 
   deleteOne: {
@@ -75,5 +93,8 @@ export const userTreeApi = {
         return Boom.serverUnavailable("No user tree with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a user tree",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 };

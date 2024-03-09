@@ -33,7 +33,6 @@ export const testUserTrees = [ {
   "girth": 4.86,
   "description": "fav0urite Tree",
   "province": "Leinster",
-  "userid": 1,
 },
 {
   "title": "Sitka spruce",
@@ -42,7 +41,6 @@ export const testUserTrees = [ {
   "girth": 6.70,
   "description": "/./'#[]2",
   "province": "Munster",
-  "userid": 2,
 },
 {
   "title": "Sitka spruce",
@@ -51,7 +49,6 @@ export const testUserTrees = [ {
   "girth": 6.40,
   "description": "Incredible Tree",
   "province": "Leinster",
-  "userid": 3,
 },
 ]
 

@@ -8,6 +8,7 @@ suite("Tree API tests", () => {
   let testTree = null;
   // To prevent failing with updated Joi schemas with _id and _v, isolate created user results in users array
   const users = new Array(testUsers.length);
+  const userTreeArray = new Array(testUserTrees.length);
 
   setup(async () => {
     await placemarkService.deleteAllUserTrees();
@@ -17,7 +18,7 @@ suite("Tree API tests", () => {
       // eslint-disable-next-line no-await-in-loop
       users[0] = await placemarkService.createUser(testUsers[i]); }
 
-    const user = testUsers[0];
+    const user = users[0];
     testTree = await placemarkService.addUserTree("Leinster", user._id, testUserTrees[0]);
   });
 

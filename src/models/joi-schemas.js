@@ -22,11 +22,20 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const UserTreeSpec = {
-    title: Joi.string().required(),
-    location: Joi.string().required(),
-    height: Joi.number().allow("").optional(),
-    girth: Joi.number().allow("").optional(),
-    description: Joi.string().allow("").optional(),
-    userid: Joi.string().required()
-};
+export const UserTreeSpec = Joi.object()
+  .keys({
+    title: Joi.string().required().example("Douglas fir"),
+    location: Joi.string().required().example("Powerscourt, Waterford"),
+    height: Joi.number().allow("").optional().example(30),
+    girth: Joi.number().allow("").optional().example(12),
+    description: Joi.string().allow("").optional().example("Best tree around"),
+    userid: Joi.string().required().example("4c58dsxfs85"),
+  })
+  .label("UserTree");
+
+export const UserTreeSpecPlus = UserTreeSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("UserTreePlus");
+
+export const UserTreeArraySpec = Joi.array().items(UserTreeSpecPlus).label("UserTreeArray");
