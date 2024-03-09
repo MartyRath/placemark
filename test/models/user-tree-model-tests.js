@@ -5,7 +5,7 @@ import { assertSubset } from "../test-utils.js";
 
 suite("User Tree Model tests", () => {
 
-  let userTreeList = null;
+  let testTree = null;
 
   setup(async () => {
     // Initialize the database with the desired store type
@@ -14,7 +14,7 @@ suite("User Tree Model tests", () => {
     await db.userTreeStore.deleteAllUserTrees();
     // Add a user tree for testing
     const user = testUsers[0];
-    userTreeList = await db.userTreeStore.addUserTree("Leinster", user._id, testUserTrees[0]);
+    testTree = await db.userTreeStore.addUserTree("Leinster", user._id, testUserTrees[0]);
   });
 
   test("add user tree", async () => {
@@ -30,7 +30,7 @@ suite("User Tree Model tests", () => {
     const province = "Leinster";
     const userTrees = await db.userTreeStore.getUserTreesByUserIdAndProvince(user._id, province);
     assert.equal(userTrees.length, 1);
-    assertSubset(userTreeList, userTrees[0]);
+    assertSubset(testTree, userTrees[0]);
   });
 
   test("delete all user trees", async () => {
@@ -40,12 +40,12 @@ suite("User Tree Model tests", () => {
   });
 
   test("get user tree by ID", async () => {
-    const retrievedUserTree = await db.userTreeStore.getUserTreeById(userTreeList._id);
-    assertSubset(userTreeList, retrievedUserTree);
+    const retrievedUserTree = await db.userTreeStore.getUserTreeById(testTree._id);
+    assertSubset(testTree, retrievedUserTree);
   });
 
   test("delete user tree by ID", async () => {
-    await db.userTreeStore.deleteUserTree(userTreeList._id);
+    await db.userTreeStore.deleteUserTree(testTree._id);
     const userTrees = await db.userTreeStore.getAllUserTrees();
     assert.equal(userTrees.length, 0);
   });

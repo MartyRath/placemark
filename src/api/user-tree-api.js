@@ -38,7 +38,7 @@ export const userTreeApi = {
         const { userId, userTree } = request.payload;
         const newUserTree = await db.userTreeStore.addUserTree(provinceTitle, userId, userTree);
         if (newUserTree) {
-          return h.response(userTree).code(201);
+          return h.response(newUserTree).code(201);
         }
         return Boom.badImplementation("error creating user tree");
       } catch (err) {
@@ -63,7 +63,9 @@ export const userTreeApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const userTree = await db.userTreeStore.getUserTreeById(request.params.id);
+        const treeId = request.params.treeid;
+        console.log(treeId);
+        const userTree = await db.userTreeStore.getUserTreeById(treeId);
         if (!userTree) {
           return Boom.notFound("No user tree with this id");
         }

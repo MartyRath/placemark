@@ -35,7 +35,7 @@ export const placemarkService = {
   },
 
   async addUserTree(province, userId, userTree) {
-    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/usertrees`, {
+    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/addusertree`, {
       userId,
       userTree
     });
@@ -63,7 +63,7 @@ export const placemarkService = {
   },
 
   async deleteUserTree(userTreeId) {
-    const res = await axios.delete(`${this.placemarkUrl}/api/usertrees/del/${userTreeId}`);
+    const res = await axios.delete(`${this.placemarkUrl}/api/usertrees/del/${treeid}`);
     return res.data;
   }
 };
