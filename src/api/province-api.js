@@ -4,7 +4,9 @@ import { db } from "../models/db.js";
 
 export const provinceApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const provinces = await db.provinceStore.getAllProvinces();
@@ -16,7 +18,9 @@ export const provinceApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const province = await db.userStore.getProvinceByTitle(request.params.title);

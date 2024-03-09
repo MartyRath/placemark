@@ -5,7 +5,9 @@ import { validationError } from "./logger.js";
 
 export const userTreeApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const userTrees = await db.userTreeStore.getAllUserTrees();
@@ -21,7 +23,9 @@ export const userTreeApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const userTree = await db.userTreeStore.getUserTreeById(request.params.id);
@@ -41,7 +45,9 @@ export const userTreeApi = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         // Retrieve data from POST
@@ -64,7 +70,9 @@ export const userTreeApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.userTreeStore.deleteAllUserTrees();
@@ -78,7 +86,9 @@ export const userTreeApi = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const treeId = request.params.treeid;

@@ -5,6 +5,11 @@ export const maggie = {
     password: "secret",
   };
 
+  // mozart
+export const singleTestProvince = {
+  title: "Munster"
+}
+
 export const testUsers = [
     {
       firstName: "Homer",

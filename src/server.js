@@ -42,6 +42,12 @@ async function init() {
   await server.register(Inert);
   await server.register(jwt);
 
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] }
+  });
+
   await server.register([
     Inert,
     Vision,
@@ -53,11 +59,6 @@ async function init() {
   
   server.validator(Joi);
 
-  server.auth.strategy("jwt", "jwt", {
-    key: process.env.cookie_password,
-    validate: validate,
-    verifyOptions: { algorithms: ["HS256"] }
-  });
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.cookie_name,

@@ -1,7 +1,6 @@
 import { userApi } from "./api/user-api.js";
 import { provinceApi } from "./api/province-api.js";
 import { userTreeApi } from "./api/user-tree-api.js";
-import { championTreeApi } from "./api/champion-tree-api.js";
 
 export const apiRoutes = [
   // User routes
@@ -21,5 +20,5 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/usertrees", config: userTreeApi.deleteAll },
   { method: "DELETE", path: "/api/usertrees/del/{treeid}", config: userTreeApi.deleteOne },
 
-  // Champion usertree routes
+  { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
 ];
