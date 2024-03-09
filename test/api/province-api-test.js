@@ -8,8 +8,8 @@ import { maggie, singleTestProvince, testProvinces } from "../fixtures.js";
 EventEmitter.setMaxListeners(25);
 
 suite("Province API tests", () => {
-  let user = null;
 
+  let user = null;
   setup(async () => {
     placemarkService.clearAuth();
     user = await placemarkService.createUser(maggie);

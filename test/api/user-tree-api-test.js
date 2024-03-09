@@ -1,43 +1,38 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
-import { testUsers, testUserTrees } from "../fixtures.js";
+import { maggie, singleTestProvince, singleUserTree, testProvinces, testUserTrees } from "../fixtures.js";
 
 suite("Tree API tests", () => {
 
-  let testTree = null;
-  // To prevent failing with updated Joi schemas with _id and _v, isolate created user results in users array
-  const users = new Array(testUsers.length);
-  const userTreeArray = new Array(testUserTrees.length);
+  let user = null;
+  let testProvince = null;
 
   setup(async () => {
+    placemarkService.clearAuth();
+    user = await placemarkService.createUser(maggie);
+    await placemarkService.authenticate(maggie);
     await placemarkService.deleteAllUserTrees();
     await placemarkService.deleteAllUsers();
-    // Creating test users with ids
-    for (let i = 0; i < testUsers.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      users[0] = await placemarkService.createUser(testUsers[i]); }
-
-    const user = users[0];
-    testTree = await placemarkService.addUserTree("Leinster", user._id, testUserTrees[0]);
+    user = await placemarkService.createUser(maggie);
+    await placemarkService.authenticate(maggie);
+    singleTestProvince.userid = user._id;
+    testProvince = await placemarkService.getProvinceByTitle(singleTestProvince.title);
   });
 
   teardown(async () => {});
 
   test("add user tree", async () => {
-    const user = testUsers[1];
-    const userTree = testUserTrees[1];
-    const addedUserTree = await placemarkService.addUserTree("Munster", user._id, userTree);
-    assert.isNotNull(addedUserTree._id);
-    assertSubset(userTree, addedUserTree);
+    // Need province title, userid and tree object to make new tree
+    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree)
+    assert.isNotNull(newUserTree);
+    assertSubset(singleUserTree, newUserTree);
   });
 
   test("get user trees by user id and province", async () => {
-    const user = testUsers[0];
-    const province = "Leinster";
-    const userTrees = await placemarkService.getUserTreesByUserIdAndProvince(user._id, province);
-    assert.equal(userTrees.length, 1);
-    assertSubset(testTree, userTrees[0]);
+    const userTrees = await placemarkService.getUserTreesByUserIdAndProvince(user._id, singleTestProvince.title);
+    assert.isNotNull(userTrees);
+    assertSubset(userTrees, testUserTrees);
   });
 
   test("delete all user trees", async () => {
@@ -47,8 +42,9 @@ suite("Tree API tests", () => {
   });
 
   test("delete user tree by tree ID", async () => {
-    const retrievedUserTree = await placemarkService.getUserTreeById(testTree._id);
-    assertSubset(testTree, retrievedUserTree);
+    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree);
+    const retrievedUserTree = await placemarkService.deleteUserTree(newUserTree._id);
+    assert.isNull(retrievedUserTree);
   });
 
 });
