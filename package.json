@@ -12,6 +12,9 @@
     "testmodels": "mocha --ui tdd test/models/**/*.js",
     "testapi": "mocha --ui tdd test/api/**/*.js"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MartyRath/placemark.git"
