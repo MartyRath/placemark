@@ -10,7 +10,6 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/usertrees", config: userTreeApi.deleteAll },
   { method: "DELETE", path: "/api/usertrees/del/{treeid}", config: userTreeApi.deleteOne },
 
-
   // User routes
   { method: "GET", path: "/api/users", config: userApi.find },
   { method: "POST", path: "/api/users", config: userApi.create },

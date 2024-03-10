@@ -30,6 +30,7 @@ export const UserTreeSpec = Joi.object()
     girth: Joi.number().allow("").optional().example(12),
     description: Joi.string().allow("").optional().example("Best tree around"),
     userid: Joi.string().required().example("4c58dsxfs85"),
+    province: Joi.string().required().example("Leinster"),
   })
   .label("UserTree");
 
