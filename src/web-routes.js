@@ -9,6 +9,10 @@ export const webRoutes = [
   { method: "POST", path: "/province/{title}/addusertree", config: provinceController.addUserTree },
   { method: "GET", path: "/province/{title}/deleteusertree/{treeid}", config: provinceController.deleteUserTree },
   
+  //  Admin dash
+  { method: "GET", path: "/admin", config: adminDashboardController.index },
+  { method: "GET", path: "/admin/deleteuser/{id}", config: adminDashboardController.deleteUser },
+
   // About
   { method: "GET", path: "/about", config: aboutController.index },
 
