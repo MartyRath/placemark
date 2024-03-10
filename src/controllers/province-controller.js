@@ -54,4 +54,18 @@ export const provinceController = {
       return h.redirect(`/province/${province.title}`);
     },
   },
+
+  seeMore: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const province = await db.provinceStore.getProvinceByTitleAndUserId(request.params.title, loggedInUser._id);
+      
+      const viewData = {
+        title: "Province",
+        province: province,
+        user: loggedInUser,
+      };
+      return h.view("province-view", viewData);
+    },
+  },
 };
