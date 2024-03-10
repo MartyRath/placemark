@@ -1,12 +1,22 @@
-{{#each provinces}}
-  <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{title}}
-    </h2>
-    <a href="/province/{{title}}" class="button">
-      <span class="icon is-small">
-        <i class="fas fa-folder-open"></i>
-      </span>
-    </a>
+<div class="columns">
+  <div class="column is-half">
+    {{#each provinces}}
+    <div class="box box-link-hover-shadow">
+      <h2 class="title">
+        {{title}}
+      </h2>
+      <a href="/province/{{title}}" class="button">
+        <span class="icon is-small">
+          <i class="fas fa-folder-open"></i>
+        </span>
+      </a>
+    </div>
+    {{/each}}
   </div>
-{{/each}}
+  <div class="column is-half is-256x256">
+    <figure class="image is-fullwidth">
+      <img src="\images\douglas-fir-powerscourt.jpg" alt="Tall Douglas Fir tree in Powerscourt Gardens, Wicklow" >
+      Douglas Fir, Powerscourt Gardens, Wicklow
+    </figure>
+  </div>
+</div>
