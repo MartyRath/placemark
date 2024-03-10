@@ -5,11 +5,11 @@
       <th>Email</th>
       <th>Password</th>
       <th>ID</th>
-      <th>Actions</th>
+      <th>Delete User</th>
     </tr>
   </thead>
   <tbody>
-    {{#each user}}
+    {{#each users}}
       <tr>
         <td>
           {{firstName}} {{lastName}}
@@ -24,7 +24,7 @@
           {{_id}}
         </td>
         <td>
-          <a href="/admin/deleteuser/{{_id}}" class="ui icon button">
+          <a href="/admin/deleteuser/{{user._id}}" class="ui icon button">
             <i class="fas fa-trash"></i>
           </a>
         </td>

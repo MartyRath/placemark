@@ -2,6 +2,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { provinceController} from "./controllers/province-controller.js";
+import { adminDashboardController } from "./controllers/admin-dashboard-controller.js";
 
 export const webRoutes = [
   // Province

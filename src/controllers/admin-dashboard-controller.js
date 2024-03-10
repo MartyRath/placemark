@@ -1,4 +1,4 @@
-import { db } from "../models/db";
+import { db } from "../models/db.js";
 
 
 export const adminDashboardController = {
@@ -12,5 +12,12 @@ export const adminDashboardController = {
             return h.view("admin-dashboard-view", viewData);
             }
     },
-    
+
+    deleteUser: {
+        handler: async function (request, h) {
+            await db.userStore.deleteUserById(request.params.id);
+            return h.redirect("/admin");
+        }
+    },
+
 };
