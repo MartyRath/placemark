@@ -47,6 +47,7 @@ async function init() {
     port: process.env.PORT,
     host: "0.0.0.0",
 });
+
   await server.register(Vision);
   await server.register(Cookie);
   await server.register(Inert);
