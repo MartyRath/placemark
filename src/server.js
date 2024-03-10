@@ -43,8 +43,8 @@ const swaggerOptions = {
 
 async function init() {
   const server = Hapi.server({
-    // Adding port for render, or usual 3000
-    port: process.env.PORT || 3000,
+    // Adding port for render deployment
+    port: process.env.PORT,
     host: "0.0.0.0",
 });
   await server.register(Vision);
