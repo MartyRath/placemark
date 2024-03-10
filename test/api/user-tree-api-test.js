@@ -3,7 +3,7 @@ import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
 import { maggie, singleTestProvince, singleUserTree, testProvinces, testUserTrees } from "../fixtures.js";
 
-suite("Tree API tests", () => {
+suite("User Tree API tests", () => {
 
   let user = null;
   let testProvince = null;

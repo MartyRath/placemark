@@ -38,11 +38,10 @@ export const placemarkService = {
     return res.data;
   },
 
+  // Doesn't work
   async addUserTree(province, userId, userTree) {
-    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/addusertree`, {
-      userId,
-      userTree
-    });
+    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/addusertree?userId=${userId}`,
+    userTree);
     return res.data;
   },
 
@@ -61,6 +60,7 @@ export const placemarkService = {
     return res.data;
   },
 
+  // Doesn't seem to be working...
   async getUserTreeById(userTreeId) {
     const res = await axios.get(`${this.placemarkUrl}/api/usertrees/find/${userTreeId}`);
     return res.data;

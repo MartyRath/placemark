@@ -28,7 +28,7 @@ export const userTreeApi = {
     },
     async handler(request) {
       try {
-        const userTree = await db.userTreeStore.getUserTreeById(request.params.id);
+        const userTree = await db.userTreeStore.getUserTreeByUserIdAndProvince(request.params.userId, request.params.title);
         if (!userTree) {
           return Boom.notFound("No user tree with this id");
         }
@@ -51,8 +51,9 @@ export const userTreeApi = {
     handler: async function (request, h) {
       try {
         // Retrieve data from POST
-        const provinceTitle = request.params.title;
-        const { userId, userTree } = request.payload;
+        const provinceTitle = request.params.province;
+        const {userId} = request.params;
+        const userTree = request.payload;
         const newUserTree = await db.userTreeStore.addUserTree(provinceTitle, userId, userTree);
         if (newUserTree) {
           return h.response(newUserTree).code(201);
