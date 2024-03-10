@@ -5,6 +5,11 @@ export const maggie = {
     password: "secret",
   };
 
+export const maggieCreditials = {
+  email: "maggie@simpson.com",
+  password: "secret",
+};
+
   // mozart
 export const singleTestProvince = {
   title: "Munster"

@@ -52,9 +52,9 @@ export const userTreeApi = {
       try {
         // Retrieve data from POST
         const provinceTitle = request.params.province;
-        const {userId} = request.params;
+        const { userid } = request.params;
         const userTree = request.payload;
-        const newUserTree = await db.userTreeStore.addUserTree(provinceTitle, userId, userTree);
+        const newUserTree = await db.userTreeStore.addUserTree(provinceTitle, userid, userTree);
         if (newUserTree) {
           return h.response(newUserTree).code(201);
         }
@@ -63,11 +63,11 @@ export const userTreeApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
-    tags: ["api"],
-    description: "Create a user tree",
-    notes: "Returns the newly created user tree",
-    validate: { payload: UserTreeSpec },
-    response: { schema: UserTreeSpecPlus, failAction: validationError },
+     tags: ["api"],
+     description: "Create a user tree",
+     notes: "Returns the newly created user tree",
+     validate: { payload: UserTreeSpec },
+     response: { schema: UserTreeSpecPlus, failAction: validationError },
   },
 
   deleteAll: {

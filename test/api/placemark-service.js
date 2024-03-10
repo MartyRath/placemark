@@ -1,5 +1,5 @@
 import axios from "axios"; // Allows to make http requests
-import { maggie, serviceUrl } from "../fixtures.js";
+import { serviceUrl } from "../fixtures.js";
 
 export const placemarkService = {
   placemarkUrl: serviceUrl,
@@ -39,8 +39,8 @@ export const placemarkService = {
   },
 
   // Doesn't work
-  async addUserTree(province, userId, userTree) {
-    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/addusertree?userId=${userId}`,
+  async addUserTree(province, userid, userTree) {
+    const res = await axios.post(`${this.placemarkUrl}/api/provinces/${province}/addusertree?userid=${userid}`,
     userTree);
     return res.data;
   },

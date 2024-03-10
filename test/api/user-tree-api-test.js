@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
-import { maggie, singleTestProvince, singleUserTree, testProvinces, testUserTrees } from "../fixtures.js";
+import { maggie, maggieCreditials, singleTestProvince, singleUserTree, testProvinces, testUserTrees } from "../fixtures.js";
 
 suite("User Tree API tests", () => {
 
@@ -11,12 +11,13 @@ suite("User Tree API tests", () => {
   setup(async () => {
     placemarkService.clearAuth();
     user = await placemarkService.createUser(maggie);
-    await placemarkService.authenticate(maggie);
+    await placemarkService.authenticate(maggieCreditials);
     await placemarkService.deleteAllUserTrees();
     await placemarkService.deleteAllUsers();
     user = await placemarkService.createUser(maggie);
-    await placemarkService.authenticate(maggie);
+    await placemarkService.authenticate(maggieCreditials);
     singleTestProvince.userid = user._id;
+    singleUserTree.userid = user._id;
     testProvince = await placemarkService.getProvinceByTitle(singleTestProvince.title);
   });
 
@@ -42,7 +43,7 @@ suite("User Tree API tests", () => {
   });
 
   test("delete user tree by tree ID", async () => {
-    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree);
+    const newUserTree = await placemarkService.addUserTree(singleUserTree);
     const retrievedUserTree = await placemarkService.deleteUserTree(newUserTree._id);
     assert.isNull(retrievedUserTree);
   });
