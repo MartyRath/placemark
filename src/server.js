@@ -44,8 +44,8 @@ const swaggerOptions = {
 async function init() {
   const server = Hapi.server({
     // Adding port for render, or usual 3000
-    port: process.env.PORT || 3000,
-    host: "0.0.0.0",
+    port: 3000,
+    host: "localhost",
 });
   await server.register(Vision);
   await server.register(Cookie);
