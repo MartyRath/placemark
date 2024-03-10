@@ -1,6 +1,7 @@
 <form class="box" action="/province/{{province.title}}/addusertree" method="POST">
   <input type="hidden" name="userid" value="{{user._id}}">
-  
+  <!-- Added below for joi schema -->
+  <input type="hidden" name="province" value="{{province.title}}">
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">

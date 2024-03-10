@@ -25,7 +25,7 @@ suite("User Tree API tests", () => {
 
   test("add user tree", async () => {
     // Need province title, userid and tree object to make new tree
-    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree)
+    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree);
     assert.isNotNull(newUserTree);
     assertSubset(singleUserTree, newUserTree);
   });
@@ -43,7 +43,8 @@ suite("User Tree API tests", () => {
   });
 
   test("delete user tree by tree ID", async () => {
-    const newUserTree = await placemarkService.addUserTree(singleUserTree);
+    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree);
+    console.log(newUserTree);
     const retrievedUserTree = await placemarkService.deleteUserTree(newUserTree._id);
     assert.isNull(retrievedUserTree);
   });
