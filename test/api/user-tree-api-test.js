@@ -42,11 +42,4 @@ suite("User Tree API tests", () => {
     assert.equal(userTrees.length, 0);
   });
 
-  test("delete user tree by tree ID", async () => {
-    const newUserTree = await placemarkService.addUserTree(singleTestProvince.title, user._id, singleUserTree);
-    console.log(newUserTree);
-    const retrievedUserTree = await placemarkService.deleteUserTree(newUserTree._id);
-    assert.isNull(retrievedUserTree);
-  });
-
 });

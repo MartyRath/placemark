@@ -93,7 +93,6 @@ export const userTreeApi = {
     handler: async function (request, h) {
       try {
         const treeId = request.params.treeid;
-        console.log(treeId);
         const userTree = await db.userTreeStore.getUserTreeById(treeId);
         if (!userTree) {
           return Boom.notFound("No user tree with this id");
@@ -106,6 +105,6 @@ export const userTreeApi = {
     },
     tags: ["api"],
     description: "Delete a user tree",
-    validate: { params: { id: IdSpec }, failAction: validationError },
+    validate: { params: { id: UserTreeSpec }, failAction: validationError },
   },
 };

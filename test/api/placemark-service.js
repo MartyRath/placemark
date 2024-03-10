@@ -66,7 +66,7 @@ export const placemarkService = {
     return res.data;
   },
 
-  async deleteUserTree(userTreeId) {
+  async deleteUserTree(treeid) {
     const res = await axios.delete(`${this.placemarkUrl}/api/usertrees/del/${treeid}`);
     return res.data;
   },
