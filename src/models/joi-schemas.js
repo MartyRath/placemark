@@ -40,3 +40,10 @@ export const UserTreeSpecPlus = UserTreeSpec.keys({
 }).label("UserTreePlus");
 
 export const UserTreeArraySpec = Joi.array().items(UserTreeSpecPlus).label("UserTreeArray");
+
+export const JwtAuth = Joi.object()
+  .keys({
+    success: Joi.boolean().example("true").required(),
+    token: Joi.string().example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo").required(),
+  })
+  .label("JwtAuth");
