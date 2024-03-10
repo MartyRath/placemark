@@ -6,6 +6,17 @@
 This web app allows users to placemark their favourite trees, and also acts as a resource of Ireland's Champion Trees.
 
 <strong>Technologies used:</strong>
+- Language: node.js, JavaScript
 - Framework: Hapi
-- Templating: Handlebars
+- Template Engine: Handlebars
 - Validation: Joi
+- Authentication: JWT
+- Databases: LowDB, Cloud Atlas
+- Deployment: Glitch, Render
+- HTTP Client: Axios
+- Testing Framework: Mocha
+- Assertion Library: Chai
+- Code Linter: ESLint
+- File Watcher: Nodemon
+- CSS Framework: Bulma
+- Icon Library: Font Awesome
