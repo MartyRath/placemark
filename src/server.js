@@ -42,11 +42,23 @@ const swaggerOptions = {
 };
 
 async function init() {
+  let port;
+  let host;
+// If process.env.PORT is available, will choose that, otherwise defaults to localhost and 3000
+  if (process.env.PORT) {
+    port = process.env.PORT;
+    host = "0.0.0.0"
+  }
+  else {
+    port = 3000;
+    host = "localhost";
+  }
+
   const server = Hapi.server({
-    // Adding port for render, or usual 3000
-    port: 3000,
-    host: "localhost",
+    port: port,
+    host: host,
 });
+
   await server.register(Vision);
   await server.register(Cookie);
   await server.register(Inert);
