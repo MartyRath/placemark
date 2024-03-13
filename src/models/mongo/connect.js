@@ -9,6 +9,7 @@ export function connectMongo() {
   dotenv.config();
 
   Mongoose.set("strictQuery", true);
+  // Chooses either local db or cloud atlas, depending which is defined in .env
   Mongoose.connect(process.env.db);
   const db = Mongoose.connection;
 
@@ -32,6 +33,7 @@ export function connectMongo() {
     console.log(`database connected to ${db.name} on ${db.host}`);
 
     try {
+      // Counts how many docs in collections
       const provinceCount = await Province.countDocuments();
       const championTreeCount = await ChampionTree.countDocuments();
 

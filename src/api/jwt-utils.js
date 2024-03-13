@@ -5,6 +5,7 @@ import { db } from "../models/db.js";
 const result = dotenv.config();
 
 export function createToken(user) {
+  // Need user credentials to create token
   const payload = {
     id: user._id,
     email: user.email,
@@ -13,6 +14,7 @@ export function createToken(user) {
     algorithm: "HS256",
     expiresIn: "1h",
   };
+  // Token can only be decoded using cookie_password
   return jwt.sign(payload, process.env.cookie_password, options);
 }
 

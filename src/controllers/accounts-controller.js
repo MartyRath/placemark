@@ -51,6 +51,8 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
+
+      // For admin dashboard, must create admin account first
       if (email === process.env.admin_email && password === process.env.admin_password) {
         request.cookieAuth.set({ id: user._id });
         return h.redirect("/admin");
