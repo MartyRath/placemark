@@ -13,7 +13,7 @@ This web app allows users to placemark their favourite trees, and also acts as a
 - Framework: Hapi
 - Template Engine: Handlebars
 - Validation: Joi
-- Authentication: JWT
+- Authentication: JSON Web Tokens
 - Databases: LowDB, Cloud Atlas
 - Deployment: Glitch, Render
 - HTTP Client: Axios
